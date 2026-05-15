@@ -1,0 +1,22 @@
+import React from 'react';
+
+const BRAND_GREEN = '#22C55E';
+const THINKING_GRADIENT = 'linear-gradient(90deg, #22C55E 0%, #4ADE80 50%, #22C55E 100%)';
+
+interface AgentCartProps {
+  totalPrice: number;
+  itemCount: number;
+  state?: 'idle' | 'processing' | 'error';
+  onViewCart: () => void;
+}
+
+export const AgentCart: React.FC<AgentCartProps> = ({
+  totalPrice,
+  itemCount,
+  state = 'idle',
+  onViewCart,
+}) => {
+  const isError = state === 'error';
+  const isProcessing = state === 'processing';
+
+  const background = isError ? ERROR_RED : BRAND_GREEN;
